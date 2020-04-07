@@ -1,5 +1,5 @@
 # ethereum-geth
-Creating ethereum network using Geth
+Creating ethereum network using Geth with different machine
 
 Ethereum node needs Client CLI to connect to the ethereum network. In this repo, Client CLI that will be used is Geth (Go Ethereum), a Go based software that will run node on the Ethereum network.
 
