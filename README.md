@@ -35,13 +35,13 @@ EOA can be created outside or inside console node.
   ```
   personal.newAccount()
   ```
-Geth software will ask for a paraphrase that will be use to encrypt/decrypt private key.
+  Geth software will ask for a paraphrase that will be use to encrypt/decrypt private key.
 
 - To use the account for transactions, you will need to unlock your account using this command
   ```
   personal.unlockAccount(eth.accounts[0],<password>,15000)
   ```
-Above command will make your account stay unlock for about 15 minutes
+  Above command will make your account stay unlock for about 15 minutes
 
 - To check balance of your account use this
   ```
@@ -61,3 +61,34 @@ Above command will make your account stay unlock for about 15 minutes
   ```
   eth.mining()
   ```
+To avoid mining process add empty data blocks to the chain, use preload json file when running console command
+
+### Interconnect Node
+1. Create another nodes on the different machine
+2. Open console node1, check enode info as the representation of node address
+    ```
+    admin.nodeInfo.enode
+    ```
+3. Add peer of node 1 on node 2 console using this command
+    ```
+    admin.addPeer(<enodeID>)
+    ```
+   change IP in enode ID using your IP machine on node 1
+4. Check peer using this command
+    ```
+    admin.peers
+    ```
+5. To remove peer use this command
+    ```
+    admin.removePeer(<enodeID>)
+    ```
+
+### Sending Transactions
+- To send transaction between two different machine use this command 
+    ```
+    > eth.sendTransaction({ from: eth.accounts[0], to: <public address of second EOA> , value: web3.toWei(5,"ether"), gas:0xEEE00 , data: "0x00"})
+    ```
+- Check transaction details using this command
+    ```
+    eth.getTransaction(<hash transaction>)
+    ```
